@@ -30,7 +30,21 @@ class Oauth2 extends Frontend_Controller {
 				if ('agree'==$this->input->post('agree')) {
 					// agree to connect.
 					// generate code
+					$this->load->model('code_m');
+					$code = array(
+						'user_id' => $this->data['loginedUser']['id'],
+						'client_id' => $clientId,
+						'code' => $this->code_m->generate_code(),
+						'expire' => time() + 60 * 5
+					);
+					$this->code_m->save($code);
 					// redirect
+					if (strpos($this->input->get('redirect_uri'), '?')) {
+						$redirect = "&";
+					} else{
+						$redirect = "?";
+					}
+					redirect($this->input->get('redirect_uri') . "{$redirect}code={$code['code']}");
 				} else {
 					// disagree to connect. redirect
 				}
