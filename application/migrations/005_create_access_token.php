@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Migration_Create_Applications extends CI_Migration {
+class Migration_Create_Access_Token extends CI_Migration {
 
 	public function __construct()
 	{
@@ -16,37 +16,43 @@ class Migration_Create_Applications extends CI_Migration {
 				'unsigned' => TRUE,
 				'auto_increment' => TRUE,
 			),
-			'name' => array(
-				'type' => 'VARCHAR',
-				'constraint' => 255,
+			'user_id' => array(
+				'type' => 'INT',
+				'constraint' => 11,
+				'unsigned' => TRUE,
 				'null' => FALSE,
 			),
 			'client_id' => array(
+				'type' => 'INT',
+				'constraint' => 11,
+				'unsigned' => TRUE,
+				'null' => FALSE,
+			),
+			'session_id' => array(
 				'type' => 'VARCHAR',
 				'constraint' => 40,
 				'null' => FALSE,
 			),
-			'client_secret' => array(
+			'access_token' => array(
 				'type' => 'VARCHAR',
-				'constraint' => 40,
+				'constraint' => '32',
 				'null' => FALSE,
 			),
-			'owner_id' => array(
+			'expire' => array(
 				'type' => 'INT',
 				'constraint' => 11,
 				'null' => FALSE,
 			),
 		));
 		$this->dbforge->add_key('id', true);
-		$this->dbforge->add_key(array('owner_id', 'client_id'));
-		$this->dbforge->create_table('applications');
+		$this->dbforge->create_table('access_token');
 	}
 
 	public function down() {
-		$this->dbforge->drop_table('applications');
+		$this->dbforge->drop_table('access_token');
 	}
 
 }
 
-/* End of file 002_create_applications.php */
-/* Location: ./applications.php */
+/* End of file 003_create_access_token.php */
+/* Location: ./application/migrations/003_create_access_token.php */

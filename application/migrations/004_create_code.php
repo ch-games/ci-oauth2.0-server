@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Migration_Create_Applications extends CI_Migration {
+class Migration_Create_Code extends CI_Migration {
 
 	public function __construct()
 	{
@@ -16,37 +16,40 @@ class Migration_Create_Applications extends CI_Migration {
 				'unsigned' => TRUE,
 				'auto_increment' => TRUE,
 			),
-			'name' => array(
-				'type' => 'VARCHAR',
-				'constraint' => 255,
-				'null' => FALSE,
-			),
 			'client_id' => array(
-				'type' => 'VARCHAR',
-				'constraint' => 40,
-				'null' => FALSE,
-			),
-			'client_secret' => array(
-				'type' => 'VARCHAR',
-				'constraint' => 40,
-				'null' => FALSE,
-			),
-			'owner_id' => array(
 				'type' => 'INT',
 				'constraint' => 11,
+				'unsigned' => TRUE,
+				'null' => FALSE,
+			),
+			'user_id' => array(
+				'type' => 'INT',
+				'constraint' => 11,
+				'unsigned' => TRUE,
+				'null' => FALSE,
+			),
+			'code' => array(
+				'type' => 'VARCHAR',
+				'constraint' => 32,
+				'null' => FALSE,
+			),
+			'expire' => array(
+				'type' => 'INT',
+				'constraint' => 11,
+				'unsigned' => TRUE,
 				'null' => FALSE,
 			),
 		));
 		$this->dbforge->add_key('id', true);
-		$this->dbforge->add_key(array('owner_id', 'client_id'));
-		$this->dbforge->create_table('applications');
+		$this->dbforge->add_key(array('user_id', 'client_id'));
+		$this->dbforge->create_table('code');
 	}
 
 	public function down() {
-		$this->dbforge->drop_table('applications');
+		$this->dbforge->drop_table('code');
 	}
 
 }
 
-/* End of file 002_create_applications.php */
-/* Location: ./applications.php */
+/* End of file 004_create_code.php */
+/* Location: ./application/migrations/004_create_code.php */

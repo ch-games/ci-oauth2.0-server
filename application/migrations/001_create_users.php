@@ -24,12 +24,12 @@ class Migration_Create_Users extends CI_Migration {
 				'type' => 'VARCHAR',
 				'constraint' => '128',
 			),
-			'name' => array(
+			'screen_name' => array(
 				'type' => 'VARCHAR',
 				'constraint' => '100',
 			),
 		));
-		$this->dbforge->add_key('id');
+		$this->dbforge->add_key('id', true);
 		$this->dbforge->create_table('users');
 	}
 

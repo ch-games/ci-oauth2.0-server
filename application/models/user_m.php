@@ -6,7 +6,7 @@ class User_M extends MY_Model {
 
 	public function hash($value='')
 	{
-		return $value;
+		return md5(md5($value . config_item('encrption_key')));
 	}
 
 	public function login()
@@ -27,10 +27,12 @@ class User_M extends MY_Model {
 		$array = array(
 			'id' => $user->id,
 			'email' => $user->email,
-			'name' => $user->name,
+			'name' => $user->screen_name,
 			'loggedin' => TRUE,
 		);
 		$this->session->set_userdata( $array );
+		$CI =& get_instance();
+		$CI->data['loginedUser'] = $array;
 	}
 
 	public function logout()

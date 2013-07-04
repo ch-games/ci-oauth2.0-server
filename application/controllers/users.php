@@ -36,7 +36,7 @@ class Users extends Frontend_Controller {
 	public function register()
 	{
 		if (is_post()) {
-			$data = array_from_post(array('email', 'password', 'name'));
+			$data = array_from_post(array('email', 'password', 'screen_name'));
 			$data['password'] =$this->user_m->hash($data['password']);
 			$data['id'] = $this->user_m->save($data);
 			$user = (object) $data;

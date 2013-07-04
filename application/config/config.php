@@ -1,5 +1,20 @@
 <?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
+function __autoload($classname) {
+	if (strpos($classname, 'CI_') !== 0) {
+		$file = APPPATH . 'libraries/' . $classname . '.php';
+		if (file_exists($file) && is_file($file)) {
+			include_once($file);
+			return;
+		}
+		// add support for lowercase file name
+		$file = APPPATH . 'libraries/' . strtolower($classname) . '.php';
+		if (file_exists($file)&&is_file($file)) {
+			include_once($file);
+		}
+	}
+}
+
 /*
 |--------------------------------------------------------------------------
 | Base Site URL
@@ -224,7 +239,7 @@ $config['cache_path'] = '';
 | MUST set an encryption key.  See the user guide for info.
 |
 */
-$config['encryption_key'] = '';
+$config['encryption_key'] = 'f5821ed25$5e5d&58fe==4j7i';
 
 /*
 |--------------------------------------------------------------------------
@@ -244,12 +259,12 @@ $config['encryption_key'] = '';
 | 'sess_time_to_update'		= how many seconds between CI refreshing Session Information
 |
 */
-$config['sess_cookie_name']		= 'ci_session';
+$config['sess_cookie_name']		= 'oauth_session';
 $config['sess_expiration']		= 7200;
 $config['sess_expire_on_close']	= FALSE;
-$config['sess_encrypt_cookie']	= FALSE;
-$config['sess_use_database']	= FALSE;
-$config['sess_table_name']		= 'ci_sessions';
+$config['sess_encrypt_cookie']	= TRUE;
+$config['sess_use_database']	= TRUE;
+$config['sess_table_name']		= 'sessions';
 $config['sess_match_ip']		= FALSE;
 $config['sess_match_useragent']	= TRUE;
 $config['sess_time_to_update']	= 300;
@@ -357,6 +372,6 @@ $config['rewrite_short_tags'] = FALSE;
 */
 $config['proxy_ips'] = '';
 
-
+$config['app_name'] = 'OAuth2.0 Server';
 /* End of file config.php */
 /* Location: ./application/config/config.php */

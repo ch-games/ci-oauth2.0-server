@@ -8,13 +8,13 @@
     		<div class="control-group">
     			<label for="name" class="control-label">Email:</label>
     			<div class="controls">
-					<input type="email" name="user" id="name" placeholder="Email">
+					<input type="email" name="email" id="name" placeholder="Email" autocomplete="off">
     			</div>
     		</div>
     		<div class="control-group">
     			<label for="password" class="control-label">Password:</label>
     			<div class="controls">
-					<input type="password" id="password" placeholder="Password">
+					<input type="password" name="password" id="password" placeholder="Password" autocomplete="off">
 				</div>
     		</div>
     		<div class="form-actions">

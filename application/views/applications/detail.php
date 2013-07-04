@@ -4,13 +4,13 @@
 	</div>
 	<div class="row-fluid">
 		<div class="span12">
-			<dl>
+			<dl class="dl-horizontal">
 				<dt>App Key:</dt>
-				<dd><?= $application->key;?></dd>
+				<dd><?= $application->client_id;?></dd>
 			</dl>
-			<dl>
+			<dl class="dl-horizontal">
 				<dt>App Secret:</dt>
-				<dd><?= $application->secret;?></dd>
+				<dd><?= $application->client_secret;?></dd>
 			</dl>
 		</div>
 	</div>

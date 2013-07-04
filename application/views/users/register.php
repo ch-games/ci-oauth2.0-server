@@ -7,19 +7,19 @@
     		<div class="control-group">
     			<label for="email" class="control-label">Email:</label>
     			<div class="controls">
-					<input type="text" name="user" id="email" placeholder="Email">
+					<input type="text" name="email" id="email" placeholder="Email" autocomplete="off">
     			</div>
     		</div>
     		<div class="control-group">
     			<label for="password" class="control-label">Password:</label>
     			<div class="controls">
-					<input type="password" id="password" placeholder="Password">
+					<input type="password" id="password" name="password" placeholder="Password" autocomplete="off">
 				</div>
     		</div>
     		<div class="control-group">
     			<label for="name" class="control-label">Name:</label>
     			<div class="controls">
-    				<input type="text" id="name" name="name" placeholder="Name">
+    				<input type="text" id="name" name="screen_name" placeholder="Name" autocomplete="off">
     			</div>
     		</div>
     		<div class="form-actions">

@@ -35,10 +35,10 @@ class Applications extends Frontend_Controller {
 				}
 			} else {
 				do{
-					$data['key'] = $this->_generate_key();
-					$exist = count($this->application_m->get_by(array('key' => $data['key']), true));
+					$data['client_id'] = $this->_generate_key();
+					$exist = count($this->application_m->get_by(array('client_id' => $data['client_id']), true));
 				} while ($exist);
-				$data['secret'] = $this->_generate_secret();
+				$data['client_secret'] = $this->_generate_secret();
 				$data['owner_id'] = $this->session->userdata('id');
 			}
 			$this->application_m->save($data, $id);
