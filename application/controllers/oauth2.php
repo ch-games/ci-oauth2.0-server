@@ -34,14 +34,15 @@ class Oauth2 extends Frontend_Controller {
 					$code = array(
 						'user_id' => $this->data['loginedUser']['id'],
 						'client_id' => $clientId,
+						'session_id' => $this->session->userdata('session_id'),
 						'code' => $this->code_m->generate_code(),
-						'expire' => time() + 60 * 5
+						'expire' => time() + 60 * 5 // expired in 5 minutes.
 					);
 					$this->code_m->save($code);
 					// redirect
 					if (strpos($this->input->get('redirect_uri'), '?')) {
 						$redirect = "&";
-					} else{
+					} else {
 						$redirect = "?";
 					}
 					redirect($this->input->get('redirect_uri') . "{$redirect}code={$code['code']}");
